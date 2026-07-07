@@ -1,0 +1,15 @@
+{
+  "id": "3EB055AE5C94FF022250EF",
+  "timestamp": "2026-07-07T04:56:51.000Z",
+  "keyword": "cicilan",
+  "group": {
+    "jid": "120363409851997270@g.us",
+    "name": "TEST WA BOT"
+  },
+  "sender": {
+    "jid": "22737707909210@lid",
+    "name": "Iyas"
+  },
+  "message": "berapa sisa cicilan saya?",
+  "processed": false
+}

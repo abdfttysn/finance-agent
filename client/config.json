@@ -1,0 +1,9 @@
+{
+  "keywords": [
+    "#finsight"
+  ],
+  "monitorAllGroups": true,
+  "targetGroups": [],
+  "webhookUrl": "http://localhost:8000/process",
+  "triggersDir": "../shared/triggers"
+}

@@ -1,0 +1,39 @@
+# Python Virtual Environments
+.venv/
+venv/
+worker/venv/
+worker/.venv/
+
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+worker/__pycache__/
+
+# Node.js dependencies
+node_modules/
+client/node_modules/
+
+# WhatsApp Credentials & Session Files (SANGAT PENTING!)
+# Folder ini menyimpan token session aktif WhatsApp Anda. 
+# Jika ter-upload, orang lain bisa mengakses akun WhatsApp Anda!
+client/auth_info_baileys/
+
+# Environment Variables & Secrets
+.env
+worker/.env
+
+# OS System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Text Editor settings (Opsional)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

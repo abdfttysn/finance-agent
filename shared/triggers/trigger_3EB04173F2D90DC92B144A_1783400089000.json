@@ -1,0 +1,15 @@
+{
+  "id": "3EB04173F2D90DC92B144A",
+  "timestamp": "2026-07-07T04:54:49.000Z",
+  "keyword": "sisa",
+  "group": {
+    "jid": "120363409851997270@g.us",
+    "name": "TEST WA BOT"
+  },
+  "sender": {
+    "jid": "22737707909210@lid",
+    "name": "Iyas"
+  },
+  "message": "sisa tabungan saya berapa?",
+  "processed": false
+}
