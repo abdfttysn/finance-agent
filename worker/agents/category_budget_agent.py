@@ -13,9 +13,9 @@ from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import HumanMessage
 
 from graph.state import AgentState
-from tools.finsight_tools import CATEGORY_BUDGET_TOOLS
+from tools.elingcash_tools import CATEGORY_BUDGET_TOOLS
 
-AGENT_SYSTEM_PROMPT = """Anda adalah Budget Category Specialist untuk aplikasi FinSight.
+AGENT_SYSTEM_PROMPT = """Anda adalah Budget Category Specialist untuk aplikasi ElingCash.
 
 Tugas Anda:
 - Mengambil informasi sisa alokasi budget per kategori menggunakan tool get_categories

@@ -7,7 +7,7 @@ const path = require('path');
 // Load configurations
 let config = {
   keywords: [
-    "#finsight",
+    "#elingcash",
     "catat",
     "input",
     "tambah",

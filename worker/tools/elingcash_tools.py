@@ -1,8 +1,8 @@
 """
-tools/finsight_tools.py
+tools/elingcash_tools.py
 
-Semua 7 API tools untuk FinSight menggunakan @tool decorator LangChain.
-Setiap tool melakukan HTTP request ke Laravel Sanctum API menggunakan httpx.
+Semua 7 API tools untuk ElingCash menggunakan @tool decorator LangChain.
+Setiap tool melakukan HTTP request ke API menggunakan httpx.
 
 Tools yang tersedia:
     - get_financial_profile()
@@ -24,7 +24,7 @@ from langchain_core.tools import tool
 # Helper: Build authenticated headers & base URL
 # -------------------------------------------------------
 def _get_headers() -> dict:
-    token = os.environ.get("FINSIGHT_TOKEN", "")
+    token = os.environ.get("ELINGCASH_TOKEN", "")
     return {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ def _get_headers() -> dict:
 
 
 def _get_base_url() -> str:
-    return os.environ.get("FINSIGHT_BASE_URL", "http://localhost")
+    return os.environ.get("ELINGCASH_BASE_URL", "http://localhost")
 
 
 def _build_url(path: str) -> str:
@@ -47,7 +47,7 @@ def _build_url(path: str) -> str:
 @tool
 def get_financial_profile() -> dict:
     """
-    Mengambil profil keuangan lengkap dan terkonsolidasi dari FinSight.
+    Mengambil profil keuangan lengkap dan terkonsolidasi dari ElingCash.
 
     Gunakan tool ini untuk menjawab pertanyaan umum tentang kondisi keuangan
     pengguna, seperti: net worth, savings rate, financial runway, daftar aset,
@@ -88,7 +88,7 @@ def get_transactions(
     search: Optional[str] = None,
 ) -> dict:
     """
-    Mengambil riwayat transaksi pengguna dengan filter lengkap dari FinSight.
+    Mengambil riwayat transaksi pengguna dengan filter lengkap dari ElingCash.
 
     Gunakan tool ini untuk menjawab pertanyaan riwayat transaksi, seperti:
     "Pengeluaran bulan ini", "Transaksi makan minggu lalu", "Pemasukan hari ini", dll.
@@ -160,7 +160,7 @@ def record_transaction(
     description: Optional[str] = None,
 ) -> dict:
     """
-    Mencatat transaksi keuangan baru (pemasukan atau pengeluaran) ke FinSight.
+    Mencatat transaksi keuangan baru (pemasukan atau pengeluaran) ke ElingCash.
 
     Gunakan tool ini HANYA untuk mencatat transaksi baru yang diminta pengguna.
     PENTING: Anda HARUS mengetahui asset_id dan category_id yang valid sebelum
@@ -256,7 +256,7 @@ def get_categories(
 @tool
 def get_dashboard_summary() -> dict:
     """
-    Mengambil ringkasan dashboard operasional bulan berjalan dari FinSight.
+    Mengambil ringkasan dashboard operasional bulan berjalan dari ElingCash.
 
     Gunakan tool ini untuk menjawab pertanyaan seputar kondisi keuangan
     bulan ini, peringatan limit anggaran yang kritis, dan tagihan bulanan
@@ -287,7 +287,7 @@ def get_dashboard_summary() -> dict:
 @tool
 def get_analytics() -> dict:
     """
-    Mengambil laporan historis dan analisis finansial mendalam dari FinSight.
+    Mengambil laporan historis dan analisis finansial mendalam dari ElingCash.
 
     Gunakan tool ini untuk menjawab pertanyaan analisis jangka panjang:
     tren 6 bulan terakhir, perkembangan net worth, rasio 50/30/20 aktual,
@@ -318,7 +318,7 @@ def get_analytics() -> dict:
 @tool
 def get_assets(keyword: Optional[str] = None) -> list:
     """
-    Mengambil daftar semua rekening aset dan kewajiban pengguna dari FinSight.
+    Mengambil daftar semua rekening aset dan kewajiban pengguna dari ElingCash.
 
     Gunakan tool ini untuk menjawab pertanyaan tentang saldo rekening tertentu,
     daftar semua tabungan/investasi, atau total kewajiban/utang.

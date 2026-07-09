@@ -20,7 +20,7 @@ class AgentState(TypedDict):
         trigger_event: Payload trigger original dari WhatsApp client (JSON dict).
         intent: Klasifikasi intent yang ditentukan oleh Supervisor.
                 Contoh: 'financial_profile', 'category_budget', dll.
-        api_result: Hasil mentah yang dikembalikan oleh FinSight API
+        api_result: Hasil mentah yang dikembalikan oleh ElingCash API
                     setelah sub-agent melakukan pemanggilan tool.
         final_answer: Jawaban akhir dalam Bahasa Indonesia yang telah
                       diformat oleh formatter node, siap dikirim ke WhatsApp.

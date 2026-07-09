@@ -1,13 +1,13 @@
-# FinSight Multi-Agent Worker
+# ElingCash Multi-Agent Worker
 
-Worker ini adalah layanan Python berbasis **FastAPI** dan **LangGraph** yang berfungsi sebagai orchestrator multi-agent. Worker menerima trigger event dari client WhatsApp, merutekan pesan ke agent spesialis yang tepat, memanggil API FinSight, dan mengembalikan jawaban akhir terformat dalam Bahasa Indonesia.
+Worker ini adalah layanan Python berbasis **FastAPI** dan **LangGraph** yang berfungsi sebagai orchestrator multi-agent. Worker menerima trigger event dari client WhatsApp, merutekan pesan ke agent spesialis yang tepat, memanggil API ElingCash, dan mengembalikan jawaban akhir terformat dalam Bahasa Indonesia.
 
 ## Prasyarat
 
 - Python 3.11+
 - Pip (Python Package Installer)
 - Virtual Environment (venv)
-- Aplikasi **FinSight** (Laravel) berjalan di local (misalnya http://localhost dengan Laragon)
+- Aplikasi **ElingCash** berjalan di local (misalnya http://localhost dengan Laragon)
 - Google Gemini API Key
 
 ## Langkah Instalasi & Memulai
@@ -47,11 +47,11 @@ cp .env.example .env
 ```
 Buka file `.env` dan isi variabel berikut:
 - **`GOOGLE_API_KEY`**: API Key dari Google AI Studio (Gemini).
-- **`FINSIGHT_BASE_URL`**: URL aplikasi Laravel FinSight Anda (default: `http://localhost`).
-- **`FINSIGHT_TOKEN`**: Personal Access Token (Sanctum) dari FinSight.
+- **`ELINGCASH_BASE_URL`**: URL aplikasi ElingCash Anda (default: `http://localhost`).
+- **`ELINGCASH_TOKEN`**: Personal Access Token (Sanctum) dari ElingCash.
 
-> **Cara mendapatkan FINSIGHT_TOKEN:**
-> Jalankan perintah berikut di folder project Laravel FinSight Anda:
+> **Cara mendapatkan ELINGCASH_TOKEN:**
+> Jalankan perintah berikut di folder project ElingCash Anda:
 > ```bash
 > php artisan tinker
 > ```
@@ -74,7 +74,7 @@ Server akan berjalan di `http://localhost:8000`.
 ## Menguji Integrasi End-to-End
 
 Setelah Worker berjalan, pastikan:
-1. Laravel FinSight (API) aktif di `http://localhost` (Laragon / `php artisan serve`).
+1. ElingCash (API) aktif di `http://localhost` (Laragon / `php artisan serve`).
 2. WhatsApp Client di folder `../client` sudah terinstall (`npm install`) dan terhubung ke WhatsApp (`npm start`).
 3. Kirim pesan ke grup WhatsApp yang berisi salah satu keyword trigger (misalnya: `"bayar"`, `"tagihan"`, `"invoice"`).
 4. Contoh pertanyaan:

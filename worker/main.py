@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Verify required environment variables
-required_envs = ["GOOGLE_API_KEY", "FINSIGHT_TOKEN", "FINSIGHT_BASE_URL"]
+required_envs = ["GOOGLE_API_KEY", "ELINGCASH_TOKEN", "ELINGCASH_BASE_URL"]
 missing_envs = [env for env in required_envs if not os.getenv(env)]
 if missing_envs:
     print(f"⚠️ PERINGATAN: Variabel lingkungan berikut belum diisi: {', '.join(missing_envs)}")
@@ -30,7 +30,7 @@ from graph.pipeline import app_graph
 from langchain_core.messages import HumanMessage
 
 app = FastAPI(
-    title="FinSight Multi-Agent Worker",
+    title="ElingCash Multi-Agent Worker",
     description="Python LangGraph Worker to process WhatsApp triggers and route them to appropriate APIs",
     version="1.0.0"
 )
@@ -59,7 +59,7 @@ def health_check():
     """Health check endpoint."""
     return {
         "status": "healthy",
-        "api_connected": bool(os.getenv("FINSIGHT_TOKEN")),
+        "api_connected": bool(os.getenv("ELINGCASH_TOKEN")),
         "gemini_configured": bool(os.getenv("GOOGLE_API_KEY"))
     }
 

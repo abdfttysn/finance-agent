@@ -37,3 +37,7 @@ desktop.ini
 *.njsproj
 *.sln
 *.swp
+
+# Abaikan semua file di shared/triggers kecuali file .gitkeep
+shared/triggers/*
+!shared/triggers/.gitkeep

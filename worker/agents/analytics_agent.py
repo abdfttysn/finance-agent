@@ -14,9 +14,9 @@ from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import HumanMessage
 
 from graph.state import AgentState
-from tools.finsight_tools import ANALYTICS_TOOLS
+from tools.elingcash_tools import ANALYTICS_TOOLS
 
-AGENT_SYSTEM_PROMPT = """Anda adalah Financial Analytics Specialist untuk aplikasi FinSight.
+AGENT_SYSTEM_PROMPT = """Anda adalah Financial Analytics Specialist untuk aplikasi ElingCash.
 
 Tugas Anda:
 - Mengambil data analisis historis menggunakan get_analytics

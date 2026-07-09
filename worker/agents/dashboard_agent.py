@@ -13,9 +13,9 @@ from langgraph.prebuilt import create_react_agent
 from langchain_core.messages import HumanMessage
 
 from graph.state import AgentState
-from tools.finsight_tools import DASHBOARD_TOOLS
+from tools.elingcash_tools import DASHBOARD_TOOLS
 
-AGENT_SYSTEM_PROMPT = """Anda adalah Dashboard Operations Specialist untuk aplikasi FinSight.
+AGENT_SYSTEM_PROMPT = """Anda adalah Dashboard Operations Specialist untuk aplikasi ElingCash.
 
 Tugas Anda:
 - Mengambil data dashboard bulan berjalan menggunakan get_dashboard_summary

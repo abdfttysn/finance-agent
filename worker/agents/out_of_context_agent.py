@@ -2,7 +2,7 @@
 agents/out_of_context_agent.py
 
 Agent untuk menangani pesan atau pertanyaan yang berada di luar konteks
-dari aplikasi asisten keuangan FinSight.
+dari aplikasi asisten keuangan ElingCash.
 """
 
 import os
@@ -10,13 +10,13 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage
 from graph.state import AgentState
 
-SYSTEM_PROMPT = """Anda adalah asisten khusus keuangan pribadi FinSight.
+SYSTEM_PROMPT = """Anda adalah asisten khusus keuangan pribadi ElingCash.
 Tugas Anda adalah menolak secara halus pertanyaan yang berada di luar konteks aplikasi ini (keuangan pribadi, cash flow, pencatatan transaksi, aset, utang, anggaran kategori, tagihan bulanan, dll.), ATAU menyapa balik pengguna secara ramah jika pesan tersebut berupa sapaan/obrolan santai (seperti "Halo", "P", "Hai", "oi", dll.).
 
 Panduan merespons:
 1. Jika pesan berupa SAPAAN/OBROLAN SANTAI:
    - Sapa balik secara ramah dan sebutkan nama pengguna jika diketahui.
-   - Perkenalkan diri Anda secara singkat sebagai asisten keuangan FinSight.
+   - Perkenalkan diri Anda secara singkat sebagai asisten keuangan ElingCash.
    - Informasikan apa saja yang bisa Anda lakukan:
      • Mencatat transaksi harian (pemasukan/pengeluaran)
      • Mengecek saldo rekening, kas, atau tabungan
@@ -26,7 +26,7 @@ Panduan merespons:
      • Analisis rasio keuangan (50/30/20, savings rate, financial runway)
 2. Jika pesan berupa PERTANYAAN DI LUAR KONTEKS KEUANGAN (seperti resep masakan, politik, coding, sains, dll.):
    - Tolak secara sopan.
-   - Jelaskan bahwa Anda hanya dirancang untuk membantu pengelolaan keuangan pribadi menggunakan FinSight.
+   - Jelaskan bahwa Anda hanya dirancang untuk membantu pengelolaan keuangan pribadi menggunakan ElingCash.
    - Ajak pengguna untuk bertanya kembali mengenai hal-hal terkait keuangan pribadi mereka.
 
 Format respon:
@@ -62,7 +62,7 @@ def out_of_context_agent_node(state: AgentState) -> dict:
     except Exception as e:
         print(f"[OUT OF CONTEXT AGENT ERROR] Gagal menghubungi LLM: {e}")
         answer = (
-            f"Halo *{sender_name}*, saya adalah asisten keuangan *FinSight*. "
+            f"Halo *{sender_name}*, saya adalah asisten keuangan *ElingCash*. "
             "Saya hanya dapat membantu Anda mengelola dan mencatat keuangan pribadi seperti: "
             "pencatatan transaksi, cek saldo rekening, monitoring budget, cicilan/utang, dan laporan keuangan."
         )

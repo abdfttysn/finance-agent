@@ -42,7 +42,7 @@ def response_formatter_node(state: AgentState) -> dict:
     llm = get_formatter_llm()
     
     system_instruction = (
-        "Anda adalah asisten WhatsApp FinSight. Rangkum informasi dari chat history "
+        "Anda adalah asisten WhatsApp ElingCash. Rangkum informasi dari chat history "
         "menjadi satu jawaban yang ringkas, padat, ramah, dan berformat rapi (gunakan bullet points, "
         "bold text untuk penekanan, dan emoji minimal). "
         "Jawab langsung dalam Bahasa Indonesia. Jangan sebutkan nama tool atau detail teknis system."

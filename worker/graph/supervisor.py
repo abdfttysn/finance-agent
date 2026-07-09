@@ -43,7 +43,7 @@ class RoutingDecision(BaseModel):
 # -------------------------------------------------------
 # Prompt Supervisor
 # -------------------------------------------------------
-SUPERVISOR_SYSTEM_PROMPT = """Anda adalah Supervisor AI untuk aplikasi FinSight, asisten keuangan pribadi.
+SUPERVISOR_SYSTEM_PROMPT = """Anda adalah Supervisor AI untuk aplikasi ElingCash, asisten keuangan pribadi.
 Tugas Anda adalah mengklasifikasikan intent dari pesan pengguna ke salah satu dari 8 kategori berikut:
 
 1. **financial_profile** — Pertanyaan umum tentang kondisi keuangan: net worth, tabungan, savings rate, 
@@ -69,7 +69,7 @@ Tugas Anda adalah mengklasifikasikan intent dari pesan pengguna ke salah satu da
 7. **assets** — Informasi detail aset dan kewajiban: saldo rekening tertentu, daftar tabungan, investasi, atau utang.
    Contoh: "Berapa saldo BCA saya?", "Daftar semua rekening saya", "Berapa total utang saya?"
 
-8. **out_of_context** — Semua pertanyaan, sapaan santai, obrolan kasual, atau permintaan lain yang sama sekali tidak berkaitan dengan cash flow, pencatatan transaksi, aset, utang, anggaran, atau laporan keuangan FinSight.
+8. **out_of_context** — Semua pertanyaan, sapaan santai, obrolan kasual, atau permintaan lain yang sama sekali tidak berkaitan dengan cash flow, pencatatan transaksi, aset, utang, anggaran, atau laporan keuangan ElingCash.
    Contoh: "Halo apa kabar?", "Siapa presiden Indonesia?", "Bagaimana cara membuat nasi goreng?", "Bisa bantu saya belajar coding?", "Ceritakan lelucon"
 
 Klasifikasikan pesan berikut ke intent yang paling tepat. Jawab dengan JSON sesuai schema.
