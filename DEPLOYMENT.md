@@ -75,12 +75,37 @@ sudo docker compose ps
   sudo docker compose restart worker
   ```
 
-### 4. **Re-build Container setelah Update Kode**
-Jika ada pembaruan kode di repositori `finance-agent`:
-```bash
-git pull origin main
-sudo docker compose up -d --build
-```
+---
+
+## 🔄 Langkah Update Script Worker (Pembaruan Kode)
+
+Jika terdapat perubahan script pada **WhatsApp Client** (`client/`) maupun **AI Agent Worker** (`worker/`), ikuti langkah-langkah berikut:
+
+1. **Push Perubahan dari Komputer Lokal**:
+   ```bash
+   git add .
+   git commit -m "Update logic pada worker / whatsapp client"
+   git push origin main
+   ```
+
+2. **Pull & Re-build di Server EC2**:
+   ```bash
+   cd /home/ubuntu/finance-agent
+   git pull origin main
+   sudo docker compose up -d --build
+   ```
+   > **Catatan**: `docker compose up -d --build` hanya akan meng-compile ulang service yang kodenya berubah. Sesi WhatsApp (`auth_info_baileys`) tetap aman dan **tidak perlu re-scan QR Code**.
+
+3. **Restart Service Tertentu (Opsional)**:
+   * Jika hanya ubah kode Python AI Agent: `sudo docker compose restart worker`
+   * Jika hanya ubah kode Node.js WhatsApp Client: `sudo docker compose restart client`
+
+4. **Verifikasi Log**:
+   ```bash
+   sudo docker compose ps
+   sudo docker logs -f finance-worker
+   sudo docker logs -f whatsapp-client
+   ```
 
 ---
 
