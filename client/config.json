@@ -1,15 +1,37 @@
 {
   "keywords": [
-    "#elingcash"
+    "#elingcash",
+    "catat",
+    "input",
+    "tambah",
+    "bayar",
+    "transfer",
+    "tagihan",
+    "invoice",
+    "approve",
+    "bukti",
+    "dana",
+    "saldo",
+    "rekening",
+    "utang",
+    "hutang",
+    "cicilan",
+    "kewajiban",
+    "aset",
+    "harta",
+    "budget",
+    "anggaran",
+    "transaksi",
+    "riwayat"
   ],
   "monitorAllGroups": false,
   "targetGroups": [],
-  "webhookUrl": "http://localhost:8000/process",
-  "triggersDir": "../shared/triggers",
   "triggerOnDirectMessage": true,
   "triggerOnMention": true,
   "triggerOnKeywords": true,
   "requireOtpAccess": true,
   "otpCommandPrefix": "#otp:",
-  "otpStoragePath": "./otp_session.json"
+  "otpStoragePath": "./otp_session.json",
+  "webhookUrl": "http://worker:8000/process",
+  "triggersDir": "../shared/triggers"
 }
