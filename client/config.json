@@ -2,8 +2,14 @@
   "keywords": [
     "#elingcash"
   ],
-  "monitorAllGroups": true,
+  "monitorAllGroups": false,
   "targetGroups": [],
   "webhookUrl": "http://localhost:8000/process",
-  "triggersDir": "../shared/triggers"
+  "triggersDir": "../shared/triggers",
+  "triggerOnDirectMessage": true,
+  "triggerOnMention": true,
+  "triggerOnKeywords": true,
+  "requireOtpAccess": true,
+  "otpCommandPrefix": "#otp:",
+  "otpStoragePath": "./otp_session.json"
 }

@@ -46,10 +46,16 @@ class TriggerEventRequest(BaseModel):
     keyword: Optional[str] = None
     timestamp: str
 
+class TokenUsageResponse(BaseModel):
+    prompt_tokens: int
+    completion_tokens: int
+    total_tokens: int
+
 class ProcessResponse(BaseModel):
     answer: str
     intent: str
     success: bool
+    token_usage: Optional[TokenUsageResponse] = None
 
 # -------------------------------------------------------
 # Endpoints
@@ -68,7 +74,7 @@ async def process_trigger(event: TriggerEventRequest):
     """
     Menerima trigger event dari WhatsApp client dan menjalankannya di LangGraph.
     """
-    from utils import safe_print
+    from utils import safe_print, TokenCounterCallbackHandler
     safe_print(f"\n[WORKER] Menerima event ID: {event.id} | Pesan: \"{event.message}\"")
     
     # 1. Konstruksi State Awal
@@ -80,21 +86,31 @@ async def process_trigger(event: TriggerEventRequest):
         "final_answer": ""
     }
     
+    token_counter = TokenCounterCallbackHandler()
+    
     try:
-        # 2. Jalankan LangGraph workflow secara asynchronous
-        # Note: LangGraph support async invocation dengan ainvoke
-        result = await app_graph.ainvoke(initial_state)
+        # 2. Jalankan LangGraph workflow secara asynchronous dengan callback
+        result = await app_graph.ainvoke(
+            initial_state,
+            config={"callbacks": [token_counter]}
+        )
         
         # 3. Ambil jawaban akhir dan intent
         final_answer = result.get("final_answer", "Maaf, saya tidak dapat merumuskan jawaban.")
         intent = result.get("intent", "unknown")
         
         safe_print(f"[WORKER] Selesai memproses. Jawaban: \"{final_answer[:60]}...\"")
+        safe_print(f"[WORKER] Token Usage -> Prompt: {token_counter.prompt_tokens} | Completion: {token_counter.completion_tokens} | Total: {token_counter.total_tokens}")
         
         return ProcessResponse(
             answer=final_answer,
             intent=intent,
-            success=True
+            success=True,
+            token_usage={
+                "prompt_tokens": token_counter.prompt_tokens,
+                "completion_tokens": token_counter.completion_tokens,
+                "total_tokens": token_counter.total_tokens
+            }
         )
         
     except Exception as e:

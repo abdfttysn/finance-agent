@@ -37,7 +37,10 @@ Edit `config.json` to customize the behavior of the agent:
   "monitorAllGroups": true,
   "targetGroups": [],
   "webhookUrl": "",
-  "triggersDir": "../shared/triggers"
+  "triggersDir": "../shared/triggers",
+  "triggerOnDirectMessage": true,
+  "triggerOnMention": true,
+  "triggerOnKeywords": true
 }
 ```
 
@@ -47,6 +50,9 @@ Edit `config.json` to customize the behavior of the agent:
 - **`targetGroups`**: If `monitorAllGroups` is `false`, populate this with group JIDs (e.g., `120363123456789012@g.us`) or matching substring group names you wish to monitor.
 - **`webhookUrl`**: Optional. A POST endpoint to notify when a keyword is matched.
 - **`triggersDir`**: Directory path where matched messages are written as JSON files.
+- **`triggerOnDirectMessage`**: If `true`, any private chat (DM/japri) sent to the bot will trigger the AI directly without requiring keywords.
+- **`triggerOnMention`**: If `true`, mentioning the bot's number in a group chat will trigger the AI directly.
+- **`triggerOnKeywords`**: If `true`, keywords found in group chats will continue to trigger the AI.
 
 ## Running the Agent
 

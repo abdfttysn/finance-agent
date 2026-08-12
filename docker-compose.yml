@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    container_name: finance-worker
+    restart: always
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - AI_MODEL_NAME=${AI_MODEL_NAME:-gemini-2.0-flash}
+      - ELINGCASH_BASE_URL=${ELINGCASH_BASE_URL}
+      - ELINGCASH_TOKEN=${ELINGCASH_TOKEN}
+      - WORKER_HOST=0.0.0.0
+      - WORKER_PORT=8000
+    ports:
+      - "8000:8000"
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: whatsapp-client
+    restart: always
+    depends_on:
+      - worker
+    environment:
+      - WEBHOOK_URL=http://worker:8000/process
+    volumes:
+      - ./client/auth_info_baileys:/app/auth_info_baileys
+      - ./client/config.json:/app/config.json
+      - ./client/otp_session.json:/app/otp_session.json
+      - ./shared/triggers:/app/shared/triggers
